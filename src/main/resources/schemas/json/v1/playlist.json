@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema#",
+  "title": "playList",
+  "type": "object",
+  "description": "A list of songs",
+  "javaType": "org.anna.testJsonSchema.models.v1.PlayList",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "songs"
+  ],
+  "properties": {
+    "id": {
+      "description": "Server generated identifier for this playlist",
+      "type": "string"
+    },
+    "name": {
+      "description": "The name of the playlist",
+      "type": "string"
+    },
+    "songs": {
+      "description": "Songs in the playlist",
+      "type": "array",
+      "items": {
+        "$ref": "song.json"
+      },
+      "minItems": 1,
+      "maxItems": 100,
+      "uniqueItems": true
+    }
+  }
+}

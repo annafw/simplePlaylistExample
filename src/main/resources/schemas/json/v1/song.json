@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema#",
+  "title": "document",
+  "type": "object",
+  "description": "A song",
+  "javaType": "org.anna.testJsonSchema.models.v1.Song",
+  "additionalProperties": false,
+  "required": [
+    "artist",
+    "title"
+  ],
+  "properties": {
+    "id": {
+      "description": "Server generated id",
+      "type": "string"
+    },
+    "artist": {
+      "description": "The song artist",
+      "type": "string"
+    },
+    "title": {
+      "description": "The song title",
+      "type": "string"
+    },
+    "genre": {
+      "description": "The song genre",
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.anna</groupId>
+    <artifactId>testJsonSchema</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <dropwizard.version>1.0.0</dropwizard.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.dropwizard</groupId>
+                <artifactId>dropwizard-bom</artifactId>
+                <version>${dropwizard.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-testing</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jsonschema2pojo</groupId>
+                <artifactId>jsonschema2pojo-maven-plugin</artifactId>
+                <version>0.4.30</version>
+                <configuration>
+                    <sourceDirectory>${basedir}/src/main/resources/schemas/json/v1</sourceDirectory>
+                    <outputDirectory>${basedir}/src/main/java</outputDirectory>
+                    <targetPackage>org.anna.testJsonSchema.models.v1</targetPackage>
+                    <generateBuilders>true</generateBuilders>
+                    <includeJsr303Annotations>true</includeJsr303Annotations>
+                    <includeConstructors>false</includeConstructors>
+                    <includeAdditionalProperties>true</includeAdditionalProperties>
+                    <initializeCollections>true</initializeCollections>
+                    <targetVersion>42</targetVersion>
+                    <useCommonsLang3>true</useCommonsLang3>
+                    <!--<inclusionLevel>ALWAYS</inclusionLevel>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
